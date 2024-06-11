@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Web Player: Music for everyone</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="utility.css">
+</head>
+
+<body>
+    <div class="container flex bg-black">
+        <div class="left">
+            <div class="home p1 m2 rounded bg-grey">
+                <div class="logo "><img class="invert" src="./logo.svg"></div>
+                <ul>
+                    <li><img class="invert" src="./home.svg/home.svg" alt="home">Home</li>
+                    <li><img class="invert" src="./search.svg" alt="search">Search</li>
+                </ul>
+            </div>
+            <div class="library m2 bg-grey rounded p1 ">
+                <div class="play flex">
+                    <img src="./playlist.svg" class="invert">
+                    <h8>Your Library</h8>
+                </div>
+                <div class="songlist">
+                    <ul>
+                        <li id="1" onclick="p1('1')">Heeriye Heeriye Aa</li>
+                        <li id="2" onclick="p1('2')">Husn X Choo Lo Remix - DJ Shadow Dubai</li>
+                        <li id="3" onclick="p1('3')">Janiye</li>
+                        <li id="4" onclick="p1('4')">Kahani Suno</li>
+                        <li id="5" onclick="p1('5')">O Sajni Re</li>
+                        <li id="6" onclick="p1('6')">Oh Sajna Ve</li>
+                        <li id="7" onclick="p1('7')"> Pehle Bhi Main</li>
+                        <li id="8" onclick="p1('8')">Samjho Na</li>
+                    </ul>
+                </div>
+                <div class="footer">
+                    <div><a href="https://www.spotify.com/jp/legal/"><span>Legal</span></a></div>
+                    <div><a href="https://www.spotify.com/jp/privacy/"><span>Privacy Center</span></a></div>
+                    <div><a href="https://www.spotify.com/jp/legal/privacy-policy/"><span>Privacy Policy</span></a>
+                    </div>
+                    <div><a href="https://www.spotify.com/jp/legal/cookies-policy/"><span>Cookies</span></a></div>
+                    <div><a href="https://www.spotify.com/jp/legal/privacy-policy/#s3"><span>About Ads</span></a></div>
+                    <div><a href="https://www.spotify.com/jp/accessibility/"><span>Accessibility</span></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="right bg-grey rounded ">
+            <div class="header">
+                <div class="nav">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff"
+                        fill="none">
+                        <path d="M15 6C15 6 9.00001 10.4189 9 12C8.99999 13.5812 15 18 15 18" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff"
+                        fill="none">
+                        <path d="M9.00005 6C9.00005 6 15 10.4189 15 12C15 13.5812 9 18 9 18" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="buttons">
+                    <button class="su">Sign Up</button>
+                    <button class="li">Log in</button>
+                </div>
+            </div>
+            <div class="playlist bg-light">
+                <br>
+                <h3 style="color:white">Popular artists</h3>
+                <br>
+                <div class="card">
+                    <div class="image-container"><img id="image" src="./images.jpeg" style="border-radius: 100%;">
+                        <div class="circle-container">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="1000"
+                                xmlns="http://www.w3.org/2000/svg" onclick="pn('0')">
+                                <path d="M5 20V4L19 12L5 20Z" stroke="#141B34" stroke-width="1.5"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        DRAKE
+                        <br>
+                        <p style="font-weight: lighter; font-size: smaller;">Artist</p>
+                    </div>
+                    <div class="image-container">
+                        <img id="image" src="./miley.jpeg" style="border-radius: 100%;">
+                        <div class="circle-container">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="1000"
+                                xmlns="http://www.w3.org/2000/svg" onclick="pn('1')">
+                                <path d="M5 20V4L19 12L5 20Z" stroke="#141B34" stroke-width="1.5"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>MILEY CYRUS
+                        <br>
+                        <p style="font-weight: lighter; font-size: smaller;">Artist</p>
+                    </div>
+                    <div class="image-container"><img id="image" src="./images-2.jpeg"
+                            style="border-radius: 100%; height:260px; width:220px">
+                        <div class="circle-container">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="1000"
+                                xmlns="http://www.w3.org/2000/svg" onclick="pn('2')">
+                                <path d="M5 20V4L19 12L5 20Z" stroke="#141B34" stroke-width="1.5"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>SELENA GOMEZ
+                        <p style="font-weight: lighter; font-size: smaller;">Artist</p>
+                    </div>
+                    <div class="image-container"><img id="image" src="./week.jpeg"
+                            style="border-radius: 100%; height:250px;width:190px">
+                        <div class="circle-container">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="1000"
+                                xmlns="http://www.w3.org/2000/svg" onclick="pn('3')">
+                                <path d="M5 20V4L19 12L5 20Z" stroke="#141B34" stroke-width="1.5"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>THE WEEKND
+                        <p style="font-weight: lighter; font-size: smaller;">Artist</p>
+                    </div>
+                    <div class="image-container"><img id="image" src="./images-1.jpeg"
+                            style="border-radius: 50%; height:250px; width:200px">
+                        <div class="circle-container">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="1000"
+                                xmlns="http://www.w3.org/2000/svg" onclick="pn('4')">
+                                <path d="M5 20V4L19 12L5 20Z" stroke="#141B34" stroke-width="1.5"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>SHAWN MENDES
+                        <p style="font-weight: lighter; font-size: smaller;">Artist</p>
+                    </div>
+                    <div class="image-container"><img id="image"
+                            src="./artworks-mzzbBkkDzuF8szkK-j9Qzbw-t500x500.jpg"
+                            style="border-radius: 45%; height:260px; width:205px">
+                        <div class="circle-container">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="1000"
+                                xmlns="http://www.w3.org/2000/svg" onclick="pn('5')">
+                                <path d="M5 20V4L19 12L5 20Z" stroke="#141B34" stroke-width="1.5"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>ONE DIRECTION
+                        <p style="font-weight: lighter; font-size: smaller;">Artist</p>
+                    </div>
+                    <div class="image-container"><img id="image" src="./travis.jpeg"
+                            style="border-radius: 50%; height:250px; width:200px">
+                        <div class="circle-container">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="1000"
+                                xmlns="http://www.w3.org/2000/svg" onclick="pn('6')">
+                                <path d="M5 20V4L19 12L5 20Z" stroke="#141B34" stroke-width="1.5"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>TRAVIS SCOTT
+                        <p style="font-weight: lighter; font-size: smaller;">Artist</p>
+                    </div>
+                </div>
+                <div class="album bg-black">
+                    <br>
+                    <h3 style="color:white">Popular Albums</h3>
+                    <div class="pics flex">
+                        <div class="all">
+                            <img src="./image.png" height="250px" ; width="220px">
+                            <div class="circle-container1">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="1000"
+                                    xmlns="http://www.w3.org/2000/svg" onclick="play1()">
+                                    <path d="M5 20V4L19 12L5 20Z" stroke="#141B34" stroke-width="1.5"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <br>
+                            love hotel
+                            <p style="font-weight: lighter; font-size: smaller;">leftovermax</p>
+                        </div>
+                        <div class="all">
+                            <img src="./image copy.png" height="250px" ; width="220px">
+                            <div class="circle-container1">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="1000"
+                                    xmlns="http://www.w3.org/2000/svg" onclick="play2()">
+                                    <path d="M5 20V4L19 12L5 20Z" stroke="#141B34" stroke-width="1.5"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <br>
+                            Still Rollin
+                            <p style="font-weight: lighter; font-size: smaller;">Shubh</p>
+                        </div>
+                        <div class="all">
+                            <img src="./image copy 2.png" height="250px" ; width="220px">
+                            <div class="circle-container1">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="1000"
+                                    xmlns="http://www.w3.org/2000/svg" onclick="play3()">
+                                    <path d="M5 20V4L19 12L5 20Z" stroke="#141B34" stroke-width="1.5"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <br>
+                            The tortured
+                            <p style="font-weight: lighter; font-size: smaller;">Taylor Swift</p>
+                        </div>
+                        <div class="all">
+                            <img src="./image copy 3.png" height="250px" ; width="220px">
+                            <div class="circle-container1">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="1000"
+                                    xmlns="http://www.w3.org/2000/svg" onclick="play4()">
+                                    <path d="M5 20V4L19 12L5 20Z" stroke="#141B34" stroke-width="1.5"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <br>
+                            Husn
+                            <p style="font-weight: lighter; font-size: smaller;">Anuv Jain</p>
+                        </div>
+                        <div class="all">
+                            <img src="./image copy 4.png" height="250px" ; width="220px">
+                            <div class="circle-container1">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="1000"
+                                    xmlns="http://www.w3.org/2000/svg" onclick="play5()">
+                                    <path d="M5 20V4L19 12L5 20Z" stroke="#141B34" stroke-width="1.5"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <br>
+                            Ghost
+                            <p style="font-weight: lighter; font-size: smaller;">Diljit Dosanjh</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+            <div class="playbar bg-grey">
+                PLAYBAR
+                <div style="color: azure; font-family: 'Times New Roman', Times, serif; font-style: italic;"class="songinfo">
+                </div>
+                <div class="songtime">
+                    <div class="time-info">
+                        <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
+                    </div>
+                
+                </div>
+                <div class="playbtn">
+                    <img id="m"src="./prevsong.svg" onclick="pp()" >
+                    <img id="m"src="./pause.svg" onclick="handlePause()">
+                    <img id="m"src="./play.svg" onclick="handleResume()">
+                    <img id="m"src="./nextsong.svg" onclick="pq()">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+<script src="./script.js"></script>
+</body>
+
+</html>

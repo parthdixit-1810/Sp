@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{
+    margin:0px;
+    padding:0px;
+    font-family: 'Roboto', sans-serif;
+}
+.home ul li{
+    width:15px;
+    list-style-type: none;
+    display: flex;
+    gap:15px;
+    padding-top: 15px;
+}
+.left{
+    width:25vw;
+    padding:10px
+}
+.right{
+    width:75vw;
+}
+.rounded{
+    border-radius: 10px;
+}
+.play{
+    width:200%;
+    display: flex;
+    gap:15px;
+    padding-top: 15px;
+    align-items: centre;
+    font-size: 15px;
+}
+.play img{
+    width:15px;
+}
+.footer{
+    display: flex;
+    font-size: 9px;
+    gap:10px;
+    position:absolute;
+    bottom:0;
+}
+.footer a{
+    color: grey;;
+}
+.library{
+    min-height: 80vh;
+    position:relative;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+.header >*{
+    padding-top: 20px;
+}
+.right{
+    margin-top:13px;
+    position:relative;
+}
+.buttons button{
+    border:30px;
+     border-radius:30px ;
+    height: 42px;
+    width:70px;
+}
+.su{
+    background-color: black;
+    color: white;
+}
+.su:hover{
+    transform: scale(1.1);
+}
+.li:hover{
+    transform: scale(1.04);
+}
+.card{
+    display:flex;
+    width:100%;
+    gap:10px;
+    overflow-x: auto; 
+}
+#image:hover
+{
+filter: opacity(0.5);
+}
+.album{
+    gap:10px;
+    overflow: auto;
+}
+.image-container {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .image-container img {
+    border-radius: 50%;
+    width: 210px; 
+    height: 260px; 
+  }
+
+  .circle-container {
+    position: absolute;
+    top: 70%;
+    left: 60%;
+    width: 50px; 
+    height: 50px;
+    visibility: hidden; 
+  }
+
+  .image-container:hover .circle-container {
+    visibility: visible; 
+  }
+
+  .circle-container svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .artist-info {
+    font-weight: lighter;
+    font-size: smaller;
+  }
+
+  h3 {
+    color: white;
+  }
+  .all{
+    position: relative;
+  }
+  .all:hover .circle-container1 {
+    visibility: visible; 
+  }
+  .circle-container1 {
+    position: absolute;
+    top: 70%;
+    left: 80%;
+    width: 50px; 
+    height: 50px;
+    visibility:hidden;
+  }
+  .playbar{
+    position:fixed;
+    bottom: 0;
+    background-color: rgb(62, 194, 62);
+    width:100%;
+  }
+  .playbtn{
+    display: flex;
+    border-radius: 20px;
+    background-color: rgb(244, 248, 244);
+    gap: 10px;
+    padding-left: 530px;
+  }
+  .songlist ul {
+    list-style-type: none;
+    padding: 0;
+}
+.songlist li {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #0eeb50;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+}
+.songlist li:hover {
+    background-color: #e0e0e0;
+}
+.time-info {
+  display: flex; 
+  color: #fff;
+  margin-top: 10px;
+}
+.playbar{
+
+  padding-bottom: 5px;
+}
