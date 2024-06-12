@@ -34,40 +34,14 @@ function formatTime(seconds) {
 }
 
 function handlePlay(au) {
-   
-    if (currentAudio && currentSong === audioUrl) {
-        currentAudio.play();
-    } else {
-        if (currentAudio) {
-            currentAudio.pause();
-        }
-        currentAudio = new Audio(audioUrl);
-        currentAudio.play();
-        currentAudio.ontimeupdate = updateProgress;
-        currentAudio.onloadedmetadata = () => {
-            totalTimeElement.textContent = formatTime(currentAudio.duration);
-        };
-        currentSong = audioUrl;
-    }
+    const audioUrl = `/songs/${au}`;
+    playNewAudio(audioUrl);
     updateSongInfo(audioUrl);
 }
 
 function handlePlay2(au, q) {
     const audioUrl = `/songs/${au}`;
-    if (currentAudio && currentSong === audioUrl) {
-        currentAudio.play();
-    } else {
-        if (currentAudio) {
-            currentAudio.pause();
-        }
-        currentAudio = new Audio(audioUrl);
-        currentAudio.play();
-        currentAudio.ontimeupdate = updateProgress;
-        currentAudio.onloadedmetadata = () => {
-            totalTimeElement.textContent = formatTime(currentAudio.duration);
-        };
-        currentSong = audioUrl;
-    }
+    playNewAudio(audioUrl);
     updateSongInfo2(q);
 }
 
@@ -91,30 +65,31 @@ function updateSongInfo(song) {
 }
 
 async function p1(q) {
-    let a = await fetch('/songs/');
-    let response = await a.text();
-    let div = document.createElement('div');
-    div.innerHTML = response;
-    let as = div.getElementsByTagName('a');
-    let songs = [];
+    try {
+        let a = await fetch('/songs/');
+        let response = await a.text();
+        let div = document.createElement('div');
+        div.innerHTML = response;
+        let as = div.getElementsByTagName('a');
+        let songs = [];
 
-    for (let index = 0; index < as.length; index++) {
-        const element = as[index];
-        if (element.href.endsWith(".mp3")) {
-            songs.push(element.href);
+        for (let index = 0; index < as.length; index++) {
+            const element = as[index];
+            if (element.href.endsWith(".mp3")) {
+                songs.push(element.href);
+            }
         }
-    }
 
-    for (let index = 0; index < songs.length; index++) {
-        if (index == q - 1) {
-            handlePlay2(songs[index], q);
+        if (songs.length >= q) {
+            handlePlay2(songs[q - 1], q);
         }
+    } catch (error) {
+        console.error("Error fetching songs:", error);
     }
 }
 
 function play1() {
-    const au = 'The Path.mp3';
-    handlePlay(au);
+    handlePlay('The Path.mp3');
 }
 
 function pause1() {
@@ -126,8 +101,7 @@ function resume1() {
 }
 
 function play2() {
-    const au = 'still rollin.mp3';
-    handlePlay(au);
+    handlePlay('still rollin.mp3');
 }
 
 function pause2() {
@@ -139,8 +113,7 @@ function resume2() {
 }
 
 function play3() {
-    const au = 'fortnight.mp3';
-    handlePlay(au);
+    handlePlay('fortnight.mp3');
 }
 
 function pause3() {
@@ -152,8 +125,7 @@ function resume3() {
 }
 
 function play4() {
-    const au = 'Husn.mp3';
-    handlePlay(au);
+    handlePlay('Husn.mp3');
 }
 
 function pause4() {
@@ -165,8 +137,7 @@ function resume4() {
 }
 
 function play5() {
-    const au = 'Ghost.mp3';
-    handlePlay(au);
+    handlePlay('Ghost.mp3');
 }
 
 function pause5() {
@@ -179,22 +150,18 @@ function resume5() {
 
 function updateSongInfo2(q) {
     let v = document.getElementsByClassName('songinfo');
-    if (q == 1) {
-        v[0].innerHTML = 'Heeriye Heeriye Aa';
-    } else if (q == 2) {
-        v[0].innerHTML = 'Husn X Choo Lo Remix - DJ Shadow Dubai';
-    } else if (q == 3) {
-        v[0].innerHTML = 'Janiye';
-    } else if (q == 4) {
-        v[0].innerHTML = 'Kahani Suno';
-    } else if (q == 5) {
-        v[0].innerHTML = 'O Sajni Re';
-    } else if (q == 6) {
-        v[0].innerHTML = 'Oh Sajna Ve';
-    } else if (q == 7) {
-        v[0].innerHTML = 'Pehle Bhi Main';
-    } else if (q == 8) {
-        v[0].innerHTML = 'Samjho Na';
+    const songNames = [
+        'Heeriye Heeriye Aa',
+        'Husn X Choo Lo Remix - DJ Shadow Dubai',
+        'Janiye',
+        'Kahani Suno',
+        'O Sajni Re',
+        'Oh Sajna Ve',
+        'Pehle Bhi Main',
+        'Samjho Na'
+    ];
+    if (v.length > 0 && q > 0 && q <= songNames.length) {
+        v[0].innerHTML = songNames[q - 1];
     }
 }
 
@@ -206,37 +173,37 @@ async function pn(mi) {
     m = mi;
     index = 0;
     songs = [];
-    let a;
-    if (m == 0) {
-        a = await fetch('/Drake2/');
-    } else if (m == 1) {
-        a = await fetch('/s2/');
-    } else if (m == 2) {
-        a = await fetch('/selena/');
-    } else if (m == 3) {
-        a = await fetch('/Weeknd/');
-    } else if (m == 4) {
-        a = await fetch('/Shawn/');
-    } else if (m == 5) {
-        a = await fetch('/One/');
-    } else if (m == 6) {
-        a = await fetch('/travis/');
+    let fetchUrl = '';
+    switch (m) {
+        case 0: fetchUrl = '/Drake2/'; break;
+        case 1: fetchUrl = '/s2/'; break;
+        case 2: fetchUrl = '/selena/'; break;
+        case 3: fetchUrl = '/Weeknd/'; break;
+        case 4: fetchUrl = '/Shawn/'; break;
+        case 5: fetchUrl = '/One/'; break;
+        case 6: fetchUrl = '/travis/'; break;
+        default: return;
     }
 
-    let response = await a.text();
-    let div = document.createElement('div');
-    div.innerHTML = response;
-    let as = div.getElementsByTagName('a');
+    try {
+        let a = await fetch(fetchUrl);
+        let response = await a.text();
+        let div = document.createElement('div');
+        div.innerHTML = response;
+        let as = div.getElementsByTagName('a');
 
-    for (let i = 0; i < as.length; i++) {
-        const element = as[i];
-        if (element.href.endsWith(".mp3")) {
-            songs.push(element.href);
+        for (let i = 0; i < as.length; i++) {
+            const element = as[i];
+            if (element.href.endsWith(".mp3")) {
+                songs.push(element.href);
+            }
         }
-    }
 
-    if (songs.length > 0) {
-        handlePlay3(songs[index]);
+        if (songs.length > 0) {
+            handlePlay3(songs[index]);
+        }
+    } catch (error) {
+        console.error("Error fetching songs:", error);
     }
 }
 
@@ -255,89 +222,72 @@ async function pp() {
 }
 
 function handlePlay3(au) {
-    if (currentAudio && currentSong === au) {
+    playNewAudio(au);
+    updateSongInfo3(au);
+}
+
+function playNewAudio(audioUrl) {
+    if (currentAudio && currentSong === audioUrl) {
         currentAudio.play();
     } else {
         if (currentAudio) {
             currentAudio.pause();
         }
-        currentAudio = new Audio(au);
+        currentAudio = new Audio(audioUrl);
         currentAudio.play();
         currentAudio.ontimeupdate = updateProgress;
         currentAudio.onloadedmetadata = () => {
             totalTimeElement.textContent = formatTime(currentAudio.duration);
         };
-        currentSong = au;
+        currentSong = audioUrl;
     }
-    updateSongInfo3(au);
 }
 
 function updateSongInfo3(song) {
     if (typeof song !== 'undefined') {
         let v = document.getElementsByClassName('songinfo');
-        if (m == 0) {
-            if (v.length > 0) {
-                let d = song.replace('/Drake2/Drake%20%E2%80%93%20', '');
-                d=d.replaceAll('/Drake2/Drake','')
-                d=d.replaceAll('%E2%80%93','')
-                d=d.replaceAll('Kyla','')
-                d=d.replaceAll(',','')
-                d = d.replaceAll('%20', '');
-                d=d.replaceAll('Wizkid','')
-                v[0].innerHTML = d.replaceAll('.mp3', '');
+        if (v.length > 0) {
+            let songName = song;
+            switch (m) {
+                case 0:
+                    songName = song.replace('/Drake2/Drake%20%E2%80%93%20', '')
+                                   .replace(/\/Drake2\/Drake/g, '')
+                                   .replace(/%E2%80%93/g, '')
+                                   .replace(/Kyla|,|%20|Wizkid/g, '')
+                                   .replace('.mp3', '');
+                    break;
+                case 1:
+                    songName = song.replace('/s2/', '')
+                                   .replace(/%20|%E2%80%93|MileyCyrus/g, '')
+                                   .replace('.mp3', '');
+                    break;
+                case 2:
+                    songName = song.replace('/selena/', '')
+                                   .replace(/%20|\(PaglaSongs\)|\(PagalNew.Com.Se\)/g, '')
+                                   .replace('.mp3', '');
+                    break;
+                case 3:
+                    songName = song.replace('/Weeknd/', '')
+                                   .replace(/%20|\(PagalNew.Com.Se\)|\(PaglaSongs\)|Mp3SongDownload\(OyeDjSurendra.Com\)/g, '')
+                                   .replace('.mp3', '');
+                    break;
+                case 4:
+                    songName = song.replace('/Shawn/', '')
+                                   .replace(/%20|_320\(PaglaSongs\)|ShawnMendes%E2%80%93/g, '')
+                                   .replace('.mp3', '');
+                    break;
+                case 5:
+                    songName = song.replaceAll('/One', '')
+                                   .replace(/%20|\/OneDirection|%E2%80%93|\/1-12/g, '')
+                                   .replace('.mp3', '');
+                    break;
+                case 6:
+                    songName = song.replace('/travis/', '')
+                                   .replace(/%20|\(trendingmusic.cc\)|-(Pagallworld)|TravisScott%E2%80%93|%CC%81A/g, '')
+                                   .replace('.mp3', '');
+                    break;
             }
-        } else if (m == 1) {
-            if (v.length > 0) {
-                let d = song.replace('/s2/', '');
-                d = d.replaceAll('%20', '');
-                d = d.replaceAll('%E2%80%93', '');
-                d = d.replaceAll('MileyCyrus', '');
-                v[0].innerHTML = d.replaceAll('.mp3', '');
-            }
-        } else if (m == 2) {
-            if (v.length > 0) {
-                let d = song.replace('/selena/', '');
-                d = d.replaceAll('%20', '');
-                d = d.replaceAll('(PaglaSongs)', '');
-                d = d.replaceAll('(PagalNew.Com.Se)', '');
-                v[0].innerHTML = d.replaceAll('.mp3', '');
-            }
-        } else if (m == 3) {
-            if (v.length > 0) {
-                let d = song.replace('/Weeknd/', '');
-                d = d.replaceAll('%20', '');
-                d = d.replaceAll('(PagalNew.Com.Se)', '');
-                d = d.replaceAll('(PaglaSongs)', '');
-                d = d.replaceAll('Mp3SongDownload(OyeDjSurendra.Com)', '');
-                v[0].innerHTML = d.replaceAll('.mp3', '');
-            }
-        } else if (m == 4) {
-            if (v.length > 0) {
-                let d = song.replace('/Shawn/', '');
-                d = d.replaceAll('%20', '');
-                d = d.replaceAll('_320(PaglaSongs)', '');
-                d = d.replaceAll('ShawnMendes%E2%80%93', '');
-                v[0].innerHTML = d.replaceAll('.mp3', '');
-            }
-        } else if (m == 5) {
-            if (v.length > 0) {
-                let d = song.replaceAll('/One', '');
-                d = d.replaceAll('%20', '');
-                d = d.replaceAll('/OneDirection', '');
-                d = d.replaceAll('%E2%80%93', '');
-                d = d.replaceAll('/1-12', '');
-                v[0].innerHTML = d.replaceAll('.mp3', '');
-            }
-        } else if (m == 6) {
-            if (v.length > 0) {
-                let d = song.replace('/travis/', '');
-                d = d.replaceAll('%20', '');
-                d = d.replaceAll('(trendingmusic.cc)', '');
-                d = d.replaceAll('-(Pagallworld)', '');
-                d = d.replaceAll('TravisScott%E2%80%93', '');
-                d = d.replaceAll('%CC%81A', '');
-                v[0].innerHTML = d.replaceAll('.mp3', '');
-            }
+            v[0].innerHTML = songName;
         }
     }
 }
